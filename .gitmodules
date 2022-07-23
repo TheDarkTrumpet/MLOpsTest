@@ -1,0 +1,3 @@
+[submodule "external/bentoml-gallery"]
+	path = external/bentoml-gallery
+	url = https://github.com/bentoml/gallery.git
