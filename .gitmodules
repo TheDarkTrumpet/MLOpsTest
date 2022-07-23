@@ -1,3 +1,6 @@
 [submodule "external/bentoml-gallery"]
 	path = external/bentoml-gallery
 	url = https://github.com/bentoml/gallery.git
+[submodule "external/mlflow-quickstart"]
+	path = external/mlflow-quickstart
+	url = https://github.com/mlflow/mlflow
