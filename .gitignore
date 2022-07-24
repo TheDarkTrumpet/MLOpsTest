@@ -9,3 +9,4 @@ build
 temp
 *.pyc
 
+.ipynb_checkpoints
