@@ -26,3 +26,25 @@ This can can be run, like in Development mode, by running:
 
 `bentoml serve quickstart-service:svc --reload`
 
+Created a file, `bentofile.yaml` which has the service definition, packages, and so on.  There can only be one of these
+files in a directory  at a time, much like a Dockefile (so based off project), and can build the process by running
+`bentoml build`
+
+The services/bentos are not stored in the same area as the models.  They're stored in:
+`~/bentoml/bentos/<name>`.  Much like models, they have a tag as well.
+
+To run the service, after built:
+`bentoml serve iris_classifier:latest`
+
+* note the name comes from the `quickstart-service.py`
+
+## Building Docker Container
+
+To build a container for this, ran:
+`bentoml containerize iris_classifier:latest`
+
+This pulled a really minimal Docker image, ran updates, and bundled the model run.  `docker images` shows it as:
+
+| Repository | Tag | Size |
+|------------|-----|------|
+| iris_classifier | kwfzgualkce3hlg6 | 823MB |

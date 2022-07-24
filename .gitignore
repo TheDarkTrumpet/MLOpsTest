@@ -10,3 +10,4 @@ temp
 *.pyc
 .ipynb_checkpoints
 .*.dtmp
+.*.drawio.bkp
