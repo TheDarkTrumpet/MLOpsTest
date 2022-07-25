@@ -48,3 +48,15 @@ This pulled a really minimal Docker image, ran updates, and bundled the model ru
 | Repository | Tag | Size |
 |------------|-----|------|
 | iris_classifier | kwfzgualkce3hlg6 | 823MB |
+
+To build with the tag 'latest', do:
+
+`bentoml containerize iris_classifier:latest -t iris_classifier:latest`
+
+To run this:
+
+`docker run -p 3000:3000 iris_classifier:latest`
+
+Some interesting notes include the cpu thread count.  THere's an explicit count set to 8. So this is parallel 
+processing available, but a bit unsure if that is just the pool for responding to API calls, or some kind of parallel 
+classification.  
