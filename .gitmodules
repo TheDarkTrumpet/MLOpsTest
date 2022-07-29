@@ -4,3 +4,6 @@
 [submodule "external/mlflow-quickstart"]
 	path = external/mlflow-quickstart
 	url = https://github.com/mlflow/mlflow
+[submodule "external/kubeflow"]
+	path = external/kubeflow
+	url = https://github.com/kubeflow/kubeflow.git
