@@ -1,8 +1,10 @@
+import datetime
 import random as rnd
 import uuid
 import pandas as pd
 import itertools
 from multiprocessing import Pool
+from datetime import date
 
 available_shapes_happiness = [
     # Circle-based Toys
@@ -11,7 +13,7 @@ available_shapes_happiness = [
      "Happiness-Range": (5, 10)},
     {"Shape": "Circle",
      "Softness": "Medium",
-     "Happiness-Range": (10, 15),
+     "Happiness-Range": (10, 15)},
      {"Shape": "Circle",
       "Softness": "Soft",
       "Happiness-Range": (5, 10)},
@@ -43,12 +45,14 @@ def generateChunk(arg):
     """ Given a tuple for the max records to generate, and max range for upper integer, will generate fixture information
     (present in toInsert), and in the end convert to a Pandas DataFrame and return to generateRecords for combination
     with other work done. """
-    maxRecords, maxInt = arg
+    maxRecords = arg
     toInsert = {
         "KEY": [],
         "Shape": [],
         "Softness": [],
-        "Happiness": []
+        "Happiness": [],
+        "Breed": [],
+        "Date": [],
     }
 
     for x in range(maxRecords):
@@ -58,6 +62,8 @@ def generateChunk(arg):
         toy_rand_range = toy_to_add["Happiness-Range"]
 
         toInsert["KEY"].append(md)
+        toInsert["Breed"].append("Calico")
+        toInsert["Date"].append(datetime.datetime.strptime(f"2020-07-{rnd.randint(1, 30)}", "%Y-%m-%d"))
         toInsert["Shape"].append(toy_to_add["Shape"])
         toInsert["Softness"].append(toy_to_add["Softness"])
         toInsert["Happiness"].append(rnd.randint(toy_rand_range[0], toy_rand_range[1]))
@@ -70,7 +76,7 @@ def generateRecords(maxRecords: int):
     """ Will create a pool of 8, and will call generateChunk parallel.  Returns a Pandas dataframe of concatenated
     results. """
     num_processes = 8
-    range_map = list(itertools.repeat((int(maxRecords / numProcesses), maxInt), numProcesses))
+    range_map = list(itertools.repeat((int(maxRecords / num_processes)), num_processes))
 
     with Pool(processes=num_processes) as pool:
         # process_pool = Pool(processes=numProcesses)
