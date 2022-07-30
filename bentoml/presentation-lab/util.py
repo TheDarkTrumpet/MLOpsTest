@@ -1,4 +1,4 @@
-import random
+import random as rnd
 import uuid
 import pandas as pd
 import itertools
@@ -47,20 +47,20 @@ def generateChunk(arg):
     toInsert = {
         "KEY": [],
         "Shape": [],
-        "": []
+        "Softness": [],
+        "Happiness": []
     }
 
     for x in range(maxRecords):
         md = uuid.uuid4().hex
-        intValue = random.randint(0, maxInt)
-        if intValue in insertedValues:
-           continue
-        insertedValues[intValue] = None
-        randString = gen.gen_sentence()
 
-        toInsert["intColumn"].append(intValue)
-        toInsert["md5"].append(md)
-        toInsert["string"].append(randString)
+        toy_to_add = available_shapes_happiness[rnd.randint(0, len(available_shapes_happiness) - 1)]
+        toy_rand_range = toy_to_add["Happiness-Range"]
+
+        toInsert["KEY"].append(md)
+        toInsert["Shape"].append(toy_to_add["Shape"])
+        toInsert["Softness"].append(toy_to_add["Softness"])
+        toInsert["Happiness"].append(rnd.randint(toy_rand_range[0], toy_rand_range[1]))
 
     pdToInsert = pd.DataFrame.from_dict(toInsert, orient='columns')
     return pdToInsert
@@ -69,13 +69,12 @@ def generateChunk(arg):
 def generateRecords(maxRecords: int):
     """ Will create a pool of 8, and will call generateChunk parallel.  Returns a Pandas dataframe of concatenated
     results. """
-    numProcesses = 8
-    maxInt = maxRecords * 200
+    num_processes = 8
+    range_map = list(itertools.repeat((int(maxRecords / numProcesses), maxInt), numProcesses))
 
-    rangeMap = list(itertools.repeat((int(maxRecords / numProcesses), maxInt), numProcesses))
-    with Pool(processes=numProcesses) as pool:
+    with Pool(processes=num_processes) as pool:
         # process_pool = Pool(processes=numProcesses)
-        dfs = pool.map(generateChunk, rangeMap)
+        dfs = pool.map(generateChunk, range_map)
     pdToInsert = pd.concat(dfs, ignore_index=True, axis=0)
 
     return pdToInsert
