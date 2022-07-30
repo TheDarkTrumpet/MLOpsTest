@@ -11,15 +11,32 @@ available_shapes_happiness = [
      "Happiness-Range": (5, 10)},
     {"Shape": "Circle",
      "Softness": "Medium",
-     "Happiness-Range": (10-15),
+     "Happiness-Range": (10, 15),
      {"Shape": "Circle",
       "Softness": "Soft",
       "Happiness-Range": (5, 10)},
 
     # Square-based Toys
+    {"Shape": "Square",
+     "Softness": "Hard",
+     "Happiness-Range": (3, 5)},
+    {"Shape": "Square",
+     "Softness": "Medium",
+     "Happiness-Range": (3, 5)},
+    {"Shape": "Square",
+     "Softness": "Soft",
+     "Happiness-Range": (3, 5)},
 
     # Rectangle-based Toys
-    
+    {"Shape": "Rectangle",
+     "Softness": "Hard",
+     "Happiness-Range": (10, 15)},
+    {"Shape": "Rectangle",
+     "Softness": "Medium",
+     "Happiness-Range": (30, 40)},
+    {"Shape": "Rectangle",
+     "Softness": "Soft",
+     "Happiness-Range": (15, 25)},
 ]
 
 def generateChunk(arg):
