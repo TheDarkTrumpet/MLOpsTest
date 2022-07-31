@@ -13,6 +13,6 @@ def classify(input_series: np.ndarray) -> np.ndarray:
     return result
 
 
-@cat_toy_ranking.api(input=JSON(), output=NumpyNdarray())
-def jclassify(input_series: str) -> np.ndarray:
-    return np.array([1])
+@cat_toy_ranking.api(input=JSON(), output=JSON())
+def jclassify(input_series: str) -> str:
+    return "{[1]}"
