@@ -43,3 +43,15 @@ The script below is what I plan to go over in my presentation, so even without i
    - Show web browser, and the two endpoints.
    - For endpoint 1 (classify).  Click 'Try it Out' and use the response body: [[0, 1, 0, 0, 1, 0]]
    - For endpoint 2 (jclassify). Simply run without input.
+
+## Building the Service
+
+1. In a terminal, type `bentoml build`
+   - Services (and build) stored in `$HOME/bentoml/bentos/cat_toy/<HASH>`
+2. cd back one directory and type `bentoml serve cat_toy_ranking:latest`
+3. cd back into `cat-toy`, and type `bentoml containerize cat_toy_ranking:latest -t cat_toy_ranking:latest`
+4. type `docker images cat_toy_ranking` to see it
+
+## Running the container
+
+1. Type `docker run -p 9999:3000 cat_toy_ranking:latest`
