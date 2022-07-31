@@ -1,0 +1,88 @@
+Auto-WEKA result:
+best classifier: weka.classifiers.trees.RandomForest
+arguments: [-I, 10, -K, 0, -depth, 0]
+attribute search: null
+attribute search arguments: []
+attribute evaluation: null
+attribute evaluation arguments: []
+metric: errorRate
+estimated errorRate: 0.08825
+training time on evaluation dataset: 0.164 seconds
+
+You can use the chosen classifier in your own code as follows:
+
+Classifier classifier = AbstractClassifier.forName("weka.classifiers.trees.RandomForest", new String[]{"-I", "10", "-K", "0", "-depth", "0"});
+classifier.buildClassifier(instances);
+
+
+Correctly Classified Instances       91175               91.175  %
+Incorrectly Classified Instances      8825                8.825  %
+Kappa statistic                          0.8544
+Mean absolute error                      0.0788
+Root mean squared error                  0.1986
+Relative absolute error                 19.4753 %
+Root relative squared error             44.1724 %
+Total Number of Instances           100000     
+
+=== Confusion Matrix ===
+
+     a     b     c   <-- classified as
+ 17152     0     0 |     a = High
+     0 51597     0 |     b = Lower
+  5000  3825 22426 |     c = Medium
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1.000    0.060    0.774      1.000    0.873      0.853    0.989     0.919     High
+                 1.000    0.079    0.931      1.000    0.964      0.926    0.986     0.980     Lower
+                 0.718    0.000    1.000      0.718    0.836      0.797    0.966     0.923     Medium
+Weighted Avg.    0.912    0.051    0.926      0.912    0.908      0.873    0.980     0.952     
+
+
+------- 5 BEST CONFIGURATIONS -------
+
+These are the 5 best configurations, as ranked by SMAC
+Please note that this list only contains configurations evaluated on at least 10 folds,
+If you need more configurations, please consider running Auto-WEKA for a longer time.
+
+Configuration #1:
+SMAC Score: 0.08824999999999998
+Argument String:
+-_0__wekaclassifierstreesrandomforest_00_INT_I 10 -_0__wekaclassifierstreesrandomforest_01_features_HIDDEN 0 -_0__wekaclassifierstreesrandomforest_02_1_INT_K 0 -_0__wekaclassifierstreesrandomforest_04_depth_HIDDEN 0 -_0__wekaclassifierstreesrandomforest_05_1_INT_depth 0 -attributesearch NONE -attributetime 60.0 -targetclass weka.classifiers.trees.RandomForest 
+
+Configuration #2:
+SMAC Score: 0.08824999999999998
+Argument String:
+-_0__wekaclassifiersfunctionslogistic_00_R 7.362272994021213E-11 -attributesearch NONE -attributetime 60.0 -targetclass weka.classifiers.functions.Logistic 
+
+Configuration #3:
+SMAC Score: 0.08824999999999998
+Argument String:
+-_0__wekaclassifierstreesreptree_00_INT_M 1 -_0__wekaclassifierstreesreptree_01_V 0.004669083026571465 -_0__wekaclassifierstreesreptree_02_depth_HIDDEN 0 -_0__wekaclassifierstreesreptree_03_1_INT_L -1 -_0__wekaclassifierstreesreptree_05_P REMOVE_PREV -aseval__wekaattributeselectioncfssubseteval_00_0_M REMOVE_PREV -aseval__wekaattributeselectioncfssubseteval_01_1_L REMOVE_PREV -assearch__wekaattributeselectionbestfirst_00_0_D 2 -assearch__wekaattributeselectionbestfirst_01_1_INT_N 5 -attributeeval weka.attributeSelection.CfsSubsetEval -attributesearch weka.attributeSelection.BestFirst -attributetime 60.0 -targetclass weka.classifiers.trees.REPTree 
+
+Configuration #4:
+SMAC Score: 0.08824999999999998
+Argument String:
+-_0__wekaclassifiersmetaattributeselectedclassifier_00_S weka.attributeSelection.BestFirst -_0__wekaclassifiersmetaattributeselectedclassifier_01_E weka.attributeSelection.CfsSubsetEval -_1_W weka.classifiers.lazy.IBk -_1_W_0_DASHDASH REMOVED -_1_W_1__wekaclassifierslazyibk_00_E REMOVED -_1_W_1__wekaclassifierslazyibk_01_INT_K 16 -_1_W_1__wekaclassifierslazyibk_02_X REMOVE_PREV -_1_W_1__wekaclassifierslazyibk_03_F REMOVE_PREV -_1_W_1__wekaclassifierslazyibk_04_I REMOVE_PREV -aseval__wekaattributeselectioncfssubseteval_00_0_M REMOVED -aseval__wekaattributeselectioncfssubseteval_01_1_L REMOVE_PREV -assearch__wekaattributeselectiongreedystepwise_00_0_C REMOVED -assearch__wekaattributeselectiongreedystepwise_01_1_B REMOVE_PREV -assearch__wekaattributeselectiongreedystepwise_02_2_R REMOVE_PREV -assearch__wekaattributeselectiongreedystepwise_03_4_INT_N 480 -attributeeval weka.attributeSelection.CfsSubsetEval -attributesearch weka.attributeSelection.GreedyStepwise -attributetime 60.0 -targetclass weka.classifiers.meta.AttributeSelectedClassifier 
+
+Configuration #5:
+SMAC Score: 0.08825
+Argument String:
+-_0__wekaclassifiersbayesbayesnet_00_D REMOVED -_0__wekaclassifiersbayesbayesnet_01_Q weka.classifiers.bayes.net.search.local.K2 -attributesearch NONE -attributetime 60.0 -targetclass weka.classifiers.bayes.BayesNet 
+
+----END OF CONFIGURATION RANKING----
+
+Temporary run directories:
+/var/folders/d7/4cl_f7wd7y5_c9gcsjbt78y80000gn/T/autoweka13673350045201823079/
+/var/folders/d7/4cl_f7wd7y5_c9gcsjbt78y80000gn/T/autoweka1212615636720363348/
+/var/folders/d7/4cl_f7wd7y5_c9gcsjbt78y80000gn/T/autoweka2123700066300181708/
+/var/folders/d7/4cl_f7wd7y5_c9gcsjbt78y80000gn/T/autoweka1096789894849969538/
+/var/folders/d7/4cl_f7wd7y5_c9gcsjbt78y80000gn/T/autoweka4968892867828024649/
+/var/folders/d7/4cl_f7wd7y5_c9gcsjbt78y80000gn/T/autoweka15955978944818313002/
+/var/folders/d7/4cl_f7wd7y5_c9gcsjbt78y80000gn/T/autoweka14342961978926379130/
+/var/folders/d7/4cl_f7wd7y5_c9gcsjbt78y80000gn/T/autoweka17622301701377581435/
+
+
+For better performance, try giving Auto-WEKA more time.
+Tried 869 configurations; to get good results reliably you may need to allow for trying thousands of configurations.
