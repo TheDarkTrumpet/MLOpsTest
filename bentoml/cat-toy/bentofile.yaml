@@ -1,0 +1,12 @@
+# bentofile.yaml
+service: "service.py:cat_toy_ranking"
+description: "file: ./service.md"
+labels:
+    owner: TheDarkTrumpet
+    stage: demo
+include:
+ - "*.py"  # A pattern for matching which files to include in the bento
+python:
+  packages:
+   - scikit-learn  # Additional libraries to be included in the bento
+   - pandas
