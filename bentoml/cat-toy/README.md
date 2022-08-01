@@ -55,3 +55,22 @@ The script below is what I plan to go over in my presentation, so even without i
 ## Running the container
 
 1. Type `docker run -p 9999:3000 cat_toy_ranking:latest`
+
+# Collaborating
+
+## Yatai Service Prep
+
+1. Verify it's running: `kubectl get pods --all-namespaces`
+2. Verify tunnel is going `minikube tunnel` (maybe no more)
+3. Ensure base setup done, api token created, and login done.
+4. Ensure logged in through terminal
+
+## Yatai Service Add Models
+1. Run  `bentoml models push cat_toy:latest` -- Model itself
+2. Run `bentoml push cat_toy_ranking:latest` -- service/API
+3. Log into Interface (see below)
+
+## Yatai Interface
+1. Show login, groups/APIs/memberships
+2. Show models
+3. Show APIs
